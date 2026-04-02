@@ -66,9 +66,11 @@ on Zen 5's dedicated shift units right at that 5-chain mark, bottlenecking the c
 
 ### Benchmark output:
 
-<details>
-<summary><b>View Raw Benchmark Output</b></summary>
+[//]: # (<details>)
 
+[//]: # (<summary><b>View Raw Benchmark Output</b></summary>)
+
+[//]: # ()
 ```
 Run on (16 X 4700 MHz CPU s)
 CPU Caches:
@@ -104,7 +106,8 @@ BM_CacheHierarchy/67108864  37.9 ns         38.4 ns     17920000
 BM_CacheHierarchy/134217728 58.5 ns         57.5 ns      8960000
 BM_CacheHierarchy/268435456 82.5 ns         82.0 ns      8960000
 ```
-</details>
+
+[//]: # (</details>)
 
 ## Build & run
 
