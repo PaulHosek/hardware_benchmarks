@@ -20,12 +20,12 @@ FetchContent_MakeAvailable(google_benchmark)
 
 add_executable(hardware_benchmarks
         main.cpp
-        cache_latency.cpp
-        tlb_walks.cpp
-        branch_prediction.cpp
-        false_sharing.cpp
-        ilp_hazards.cpp
-        vcache_jitter.cpp
+        src/cache_latency.cpp
+        src/tlb_walks.cpp
+        src/branch_prediction.cpp
+        src/false_sharing.cpp
+        src/ilp_hazards.cpp
+        src/vcache_jitter.cpp
 )
 
 target_compile_options(hardware_benchmarks PRIVATE -O3 -march=native -Wall)
