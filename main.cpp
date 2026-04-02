@@ -6,6 +6,7 @@ void GenerateCacheCSV();
 void GenerateBranchCSV();
 void GenerateVCacheCSV();
 void GenerateTlbCSV();
+void GenerateILPCSV();
 
 
 
@@ -24,6 +25,6 @@ int main(int argc, char** argv) {
     GenerateBranchCSV();
     GenerateVCacheCSV();
     GenerateTlbCSV();
-
+    GenerateILPCSV();
     return 0;
 }
