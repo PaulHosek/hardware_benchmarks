@@ -53,7 +53,7 @@ From what I read, the Zen 5 architecture should have 6 ALUs (https://chipsandche
 
 It must be that those 6 ALUs are not identical. Our ILP_Independent benchmark uses a Xorshift sequence (x ^= (x << 13); x ^= (x >> 7)) to prevent the compiler from cheating. This operation relies heavily on bit shifts.
 
-While Zen 5 can dispatch simple additions to all 6 ALUs, complex hardware like barrel shifters (required for << and >>) are may not be duplicated across every single port 
+While Zen 5 can dispatch simple additions to all 6 Integer ALUs, complex hardware like barrel shifters (required for << and >>) are may not be duplicated across every single port  
 due to the massive area and power requirements of the register file routing. Our graph proves that we are hitting a physical throughput bottleneck 
 on Zen 5's dedicated shift units right at that 5-chain mark, bottlenecking the core before we can fully saturate the theoretical 6-ALU width. 
 
