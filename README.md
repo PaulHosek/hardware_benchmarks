@@ -34,7 +34,7 @@ Compares sorted vs. shuffled data to force real branch instructions.
 Modeling Note: Modern compilers often attempt to use CMOV (Conditional Move) to avoid branches.
 I used benchmark::DoNotOptimize within conditional blocks to avoid this.
 
-<img src="./plots/branch_prediction" width="800">
+<img src="./plots/branch_prediction.png" width="800">
 
 ### 3. L3 latency & TLB thrashing
 Every single memory access is timed with `RDTSC` + `_mm_lfence`.  
