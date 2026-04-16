@@ -45,6 +45,11 @@ void GenerateCacheCSV() {
         // ---------------------------------------------------------
         // 1. STANDARD PAGES (std::vector)
         std::vector<Node> buffer_std(num_nodes);
+
+        // had a bug where the prefetcher would mess up the measurings by probably fetching based on physical memory addressses -> force sequential mapping of pages now
+        for (size_t i = 0; i < num_nodes; ++i) {
+            buffer_std[i].next = nullptr;
+        }
         std::vector<size_t> indices(num_nodes);
         std::iota(indices.begin(), indices.end(), 0);
         std::shuffle(indices.begin(), indices.end(), std::mt19937(42));

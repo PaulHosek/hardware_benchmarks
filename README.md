@@ -21,11 +21,9 @@ Below the Cache sizes and CPU specifications I used:
 ### 1. Cache hierarchy latency
 We walk a random‑order pointer chain to avoid the prefetcher and measure L1/L2/L3 reads.
 
+Plotting the initial data, I was confused because the 4KB pages were artificially outperforming the large pages. This turned out to be an artifact of OS demand paging. Because I did not pre-fault the memory, the physical pages were mapped sequentially during the setup loop, allowing the hardware prefetcher to anticipate the access pattern and hide the latency.
 
-Plotting only the red line at first, I was a bit confused. Why are access times for L3 cache not uniform? Given the range $2^{13}$ KB (8MB) to $2^{14}$ KB (16MB) matches the TLB size, I suspected these are due to TLB misses.
-Using 4KB pages and around 3000-4000 entries in L2 TLB, we can only map 12 MB of memory. So I pinned huge pages (2GB) in memory and tried again:
-
-<img src="./plots/cache_sweep_comparison.png" width="800">
+After adding a pre-faulting loop to ensure a truly random physical layout, I compared the standard 4KB pages to 2MB large pages again. The corrected results showed that exceeding the 12MB L2 TLB capacity does not cause a massive latency cliff. The true TLB miss penalty is only about 5 cycles, as the page tables themselves probably remain fully cached within the 96MB L3 cache.<img src="./plots/cache_sweep_comparison.png" width="800">
 
 
 ### 2. Branch prediction & speculation
