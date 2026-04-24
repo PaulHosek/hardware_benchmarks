@@ -29,8 +29,6 @@ After adding a pre-faulting loop to ensure a truly random physical layout, I com
 ### 2. Branch prediction & speculation
 Compares sorted vs. shuffled data to force real branch instructions. 
 
-Modeling Note: Modern compilers often attempt to use CMOV (Conditional Move) to avoid branches.
-I used benchmark::DoNotOptimize within conditional blocks to avoid this.
 
 <img src="./plots/branch_prediction.png" width="800">
 
