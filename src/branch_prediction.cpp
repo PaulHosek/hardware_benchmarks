@@ -37,7 +37,7 @@ void GenerateBranchCSV() {
 
     auto measure = [&](const std::vector<int>& data, const std::string& name) {
         for (int run = 0; run < 100; ++run) {
-            long long sum = 0;
+            volatile long long sum = 0;
 
             _mm_lfence();
             uint64_t start = __rdtsc();
